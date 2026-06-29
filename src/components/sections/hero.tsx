@@ -111,7 +111,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-xs sm:text-sm lg:text-base font-mono tracking-wider text-brand/90 uppercase min-h-[30px] flex items-center"
             >
-              <span>&gt;_ Code Beyond Limits. Build Beyond&nbsp;</span>
+              <span>Code Beyond Limits. Build Beyond&nbsp;</span>
               <span className="text-white inline-block">
                 {currentText}
                 <span className="text-white font-light animate-pulse ml-0.5">|</span>
