@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { CodeParticles } from "@/components/ui/code-particles";
@@ -23,18 +23,6 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut" as const,
-    },
-  },
-};
-
-const badgeVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
     transition: {
       duration: 0.4,
       ease: "easeOut" as const,
@@ -101,17 +89,6 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8 w-full">
         <div className="max-w-3xl flex flex-col items-start text-left space-y-6">
-          {/* Community Badge */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={badgeVariants}
-          >
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-xs text-foreground-secondary backdrop-blur-sm">
-              <Sparkles size={12} className="text-brand animate-pulse" />
-              Welcome to Ground Zero
-            </span>
-          </motion.div>
 
           {/* Text Container for Staggered Animations */}
           <motion.div
