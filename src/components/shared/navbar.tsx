@@ -10,13 +10,13 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Pillars", href: "#pillars" },
-  { label: "Tracks", href: "#tracks" },
-  { label: "Projects", href: "#projects" },
-  { label: "Events", href: "#events" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Connect", href: "#connect" },
+  { label: "Home", href: "/#home" },
+  { label: "Pillars", href: "/#pillars" },
+  { label: "Tracks", href: "/#tracks" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Events", href: "/#events" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Connect", href: "/#connect" },
 ];
 
 export function Navbar() {
