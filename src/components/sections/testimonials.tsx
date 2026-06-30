@@ -122,7 +122,7 @@ export function Testimonials() {
                           {t.name}
                         </h4>
                         <p className="text-[10px] text-foreground-muted">
-                          {t.role}
+                          {t.roles.role}
                         </p>
                       </div>
                     </div>

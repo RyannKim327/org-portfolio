@@ -3,7 +3,7 @@ export default function Admin() {
     <section
       className="relative min-h-[90vh] flex items-center justify-start overflow-hidden pt-24"
     >
-      Hello
+      hello
     </section>
   )
 }

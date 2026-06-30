@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
   const { data, error } = await supabaseConfig
     .from("testimonials")
-    .select("name, quote, created_at, role(role)")
+    .select("name, quote, created_at, roles(role)")
     .range(index, limit)
     .order("id", { ascending: false })
 
