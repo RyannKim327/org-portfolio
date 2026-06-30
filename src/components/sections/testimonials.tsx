@@ -4,28 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { defaultParams, get } from "@/app/lib/api";
-
-// const testimonials = [
-//   {
-//     name: "Alex Rivera",
-//     role: "Frontend Developer",
-//     quote: "Ground Zero gave me the space to collaborate on real production-grade code. The feedback loops here helped me advance my framework knowledge faster than any self-study course.",
-//     initials: "AR",
-//   },
-//   {
-//     name: "Mia Santos",
-//     role: "UI/UX Designer",
-//     quote: "The interactive design reviews at Ground Zero are incredibly valuable. It's refreshing to work side-by-side with engineers who are eager to bring design prototypes to life.",
-//     initials: "MS",
-//   },
-//   {
-//     name: "Jordan Kim",
-//     role: "Security Engineer",
-//     quote: "Participating in community CTFs and security walkthroughs kept me motivated. GZ is a fantastic place to share knowledge and discuss real-world infrastructure vulnerabilities.",
-//     initials: "JK",
-//   },
-// ];
+import { defaultParams, get } from "@/lib/api";
 
 const containerVariants = {
   hidden: { opacity: 0 },
