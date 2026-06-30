@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="w-dvw h-dvh flex flex-col bg-background text-foreground">
         <div className="noise-overlay" />
         <Navbar />
         <main className="flex-1">{children}</main>
