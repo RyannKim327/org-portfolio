@@ -1,4 +1,5 @@
-import { supabaseConfig } from "@/lib/supabase"
+// TODO: To setup dummy data for api call
+import { supabaseConfig } from "@/lib/supabase";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -16,14 +17,13 @@ export async function GET(request: Request) {
   }
 
   // TODO: Converting string to numbers through parseInt
-  const limit: number = parseInt(query.limit ?? "3")
+  const limit: number = parseInt(query.limit ?? "10")
   const index: number = parseInt(query.page ?? "0")
 
   const { data, error } = await supabaseConfig
-    .from("testimonials")
-    .select("name, quote, created_at, roles(role)")
+    .from("categories")
+    .select("*")
     .range(index + limit, limit)
-    .order("id", { ascending: false })
 
   return Response.json(data || error)
 }

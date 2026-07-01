@@ -230,6 +230,8 @@ npm run build
 │   │   └── logo.png         # Official GZ emblem
 ├── src/
 │   ├── app/                 # Next.js App Router (pages & global layouts)
+│   │   ├── admin/           # Admin endpoint for admin controls
+│   │   ├── api/             # API Endpoints for asyncronous access
 │   │   ├── globals.css      # Core styles & Tailwind v4 theme configurations
 │   │   ├── layout.tsx       # Root layout containing font load variables
 │   │   └── page.tsx         # Root landing page assembly
