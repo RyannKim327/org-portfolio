@@ -27,8 +27,13 @@ export async function GET(request: Request) {
       }
     );
 
+    const err = await supabase.auth.exchangeCodeForSession(code);
+
+    console.log(err.error);
+
     const {
       data,
+      error
     } = await supabase.auth.getUser();
 
     const { data: users } = await supabaseConfig
@@ -37,14 +42,12 @@ export async function GET(request: Request) {
       .eq("id", data.user?.id)
       .maybeSingle();
 
-    console.log("user")
-    console.log(data)
 
     if (!users) {
       await supabaseConfig.from("users").insert({
-        id: user?.id,
-        username: user?.user_metadata.user_name,
-        first_name: user?.user_metadata.full_name,
+        id: data?.user?.id,
+        username: data?.user?.user_metadata.user_name,
+        first_name: data?.user?.user_metadata.full_name,
       });
     }
   }

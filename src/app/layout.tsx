@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     "open source",
     "Ground Zero",
   ],
+  icons: ["images/logo.png"],
   openGraph: {
     title: "Ground Zero Community",
     description:
