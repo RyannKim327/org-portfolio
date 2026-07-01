@@ -111,8 +111,7 @@ create table public.testimonials (
 
 #### Database Schema
 
-```
-erDiagram
+```erDiagram
     ROLES {
         UUID id PK
         VARCHAR role
