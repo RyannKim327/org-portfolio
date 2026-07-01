@@ -1,6 +1,5 @@
+import { defaultParams } from "@/interfaces";
 import axios from "axios";
-
-export type defaultParams = Record<string, unknown>
 
 const localhost = true
 
