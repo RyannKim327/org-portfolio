@@ -112,6 +112,7 @@ create table public.testimonials (
 #### Database Schema
 
 ```mermaid
+erDiagram
     ROLES {
         UUID id PK
         VARCHAR role
