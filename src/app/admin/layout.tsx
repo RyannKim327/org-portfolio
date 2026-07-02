@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { supabaseConfig } from '@/lib/supabase-auth';
 import SidebarHeader from "@/components/ui/sidebar-header";
+import { div } from "framer-motion/client";
 
 
 const sidebar = [
@@ -19,15 +20,11 @@ const sidebar = [
   },
   {
     label: "Testimonials",
-    href: "testimonials"
+    href: "testimonies",
   },
   {
     label: "Users",
-    href: "users",
-    allow: [
-      "administrator",
-      "moderator"
-    ]
+    href: "users"
   }
 ]
 
@@ -72,6 +69,9 @@ export default function Admin(
   const path = usePathname().toLowerCase()
 
   const username = "nothinggonnachangemylovefromyou"
+  const roles = [
+    "all",
+  ]
   const role = "Administrator"
 
   return (
@@ -91,11 +91,11 @@ export default function Admin(
         {/* Navigation */}
         <div className="flex flex-col justify-between h-[calc(75%-0.5rem)] w-full">
           <div
-            className="flex flex-col overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-gray-900 outline-none">
+            className="flex flex-col overflow-hidden overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-brand outline-none">
             {
               sidebar.map((component) => {
                 return (
-                  component.allow?.includes(role.toLowerCase()) || component.allow === undefined ?
+                  roles.includes(component.href.toLowerCase()) || roles.includes("all") || component.href === "" ?
                     <Link className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-in-out delay-150`}>
                         &gt;_
@@ -117,8 +117,20 @@ export default function Admin(
           </Link>
         </div>
       </div>
-      <div className="w-full h-full">
-        {children}
+      <div className="w-full h-full overflow-hidden">
+        {
+          roles.includes(path.substring(1).split("/")[1])
+            || /\/admin$/.test(path)
+            || roles.includes("all")
+            ?
+            children
+            :
+            <div className="flex items-center justify-center w-full h-full">
+              <span className="text-lg">
+                <strong>403</strong> | Unauthorized Access
+              </span>
+            </div>
+        }
       </div>
     </section>
   )
