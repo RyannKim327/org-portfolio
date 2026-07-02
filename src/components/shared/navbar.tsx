@@ -128,7 +128,7 @@ export function Navbar() {
           >
             <div className="px-6 py-4 space-y-1">
               {isAuthenticated ?
-                navLinks.map((link: navigation) => (
+                navLinks[path.split("/")[0]].map((link: navigation) => (
                   <Link
                     key={link.label}
                     href={link.href}
