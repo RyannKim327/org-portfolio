@@ -68,28 +68,28 @@ export default function Admin(
 
   const path = usePathname().toLowerCase()
 
-  const username = "nothinggonnachangemylovefromyou"
+  const username = "k.guin"
   const roles = [
     "all",
   ]
-  const role = "Administrator"
+  const role = "Tambay"
 
   return (
     <section
       className="flex flex-row relative h-screen w-full gap-2 items-start justify-start overflow-hidden pt-22"
     >
-      <div className="flex flex-col w-[calc(25%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden">
+      <div className="flex flex-col w-[calc(30%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden">
         <div className="flex relative w-full h-[calc(25%-0.5rem)] bg-[#0a0a0a]">
           {/* Header Part */}
           <SidebarHeader />
           <div className={`flex flex-col absolute w-full h-full ${username.length <= 30 ? "px-5 py-4" : "px-3 py-2"} wrap-anywhere`}>
-            <span className={`text-lg`}>{username.substring(0, 20)} {username.length > 20 ? "..." : ""}</span>
-            <span className={`${role.length <= 10 ? "text-sm" : "text-xs"}`}>{role}</span>
+            <span className={`text-lg`}>@{username.substring(0, 20)} {username.length > 20 ? "..." : ""}</span>
+            <span className={`pl-5 ${role.length <= 10 ? "text-sm" : "text-xs"}`}>{role}</span>
           </div>
         </div>
 
         {/* Navigation */}
-        <div className="flex flex-col justify-between h-[calc(75%-0.5rem)] w-full">
+        <div className="flex flex-col justify-between h-[calc(70%-0.5rem)] w-full">
           <div
             className="flex flex-col overflow-hidden overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-brand outline-none">
             {
