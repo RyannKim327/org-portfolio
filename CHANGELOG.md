@@ -10,10 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Comprehensive environment setup instructions in `README.md` covering Supabase configurations, database schemas, and GitHub OAuth instructions.
 - This `CHANGELOG.md` file for systematic version and release tracking.
+- `Admin` Panel for dynamic announcement.
+- `Events Page` for dynamic control in posting announcements and happenings.
+- Custom ui/widget `input` and `textarea` for forms.
+- Custom active panel indicator.
+- Admin sidebar navigation with header and user logged in role and username.
 
 ### Changed
 - Bumped project version to `0.2.0` in `package.json`.
-- `start` to `page` api `GET` method parameter
+- `start` to `page` api `GET` method parameter for pagination,
+
 ---
 
 ## [0.1.0] - 2026-06-30
