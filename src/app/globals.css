@@ -32,6 +32,15 @@
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.6; }
   }
+  @keyframes digit-glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    91% { transform: translate(-3px, 2px); }
+    93% { transform: translate(3px, -1px); }
+    95% { transform: translate(-2px, -2px); }
+    97% { transform: translate(2px, 3px); }
+    99% { transform: translate(0); }
+  }
+  --animate-digit-glitch: digit-glitch 8s ease-in-out infinite;
 }
 
 /* ─── Base ─── */
