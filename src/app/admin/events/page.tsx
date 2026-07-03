@@ -44,7 +44,7 @@ export default function Events() {
     <div className="flex flex-row h-full w-full gap-2">
 
       {/* Form for making another event */}
-      <form className="flex flex-col h-full w-[calc(70%-0.5rem)] gap-2">
+      <form className="flex flex-col h-full w-[calc(70%-0.5rem)] gap-2 overflow-hidden overflow-y-auto scrollbar-track-transparent scrollbar-thumb-brand">
         <div className="flex flex-col md:flex-row gap-2">
           <Input label="Name" type="text" required />
           <Input label="Type" type="text" required />

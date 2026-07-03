@@ -48,7 +48,7 @@ export default function Admin(
 
   const path = usePathname().toLowerCase()
 
-  const username = "k.guin"
+  const username = "thekeylangtinapay"
   const roles = [
     "all",
   ]
@@ -56,7 +56,7 @@ export default function Admin(
 
   return (
     <section
-      className="flex flex-row relative h-screen w-full gap-2 items-start justify-start overflow-hidden pt-22"
+      className="flex flex-row relative h-screen w-full items-start justify-start overflow-hidden pt-22"
     >
       <div className="hidden md:flex flex-col bg-background w-[calc(30%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden">
         <div className="flex relative w-full h-[calc(25%-0.5rem)] bg-[#0a0a0a]">
@@ -97,7 +97,7 @@ export default function Admin(
           </Link>
         </div>
       </div>
-      <div className="w-full h-full overflow-hidden">
+      <div className="w-full h-full px-2 overflow-hidden">
         {
           roles.includes(path.substring(1).split("/")[1])
             || /\/admin$/.test(path)
