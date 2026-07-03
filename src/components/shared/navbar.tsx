@@ -82,7 +82,7 @@ export function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
-            {isAuthenticated ? navLinks[path.split("/")[0]].map((link: navigation) => (
+            {isAuthenticated && navLinks[path.split("/")[0]] ? navLinks[path.split("/")[0]].map((link: navigation) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -127,7 +127,7 @@ export function Navbar() {
             className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-b border-white/[0.06]"
           >
             <div className="px-6 py-4 space-y-1">
-              {isAuthenticated ?
+              {isAuthenticated && navLinks[path.split("/")[0]] ?
                 navLinks[path.split("/")[0]].map((link: navigation) => (
                   <Link
                     key={link.label}

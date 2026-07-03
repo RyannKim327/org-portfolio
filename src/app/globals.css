@@ -147,8 +147,8 @@ h1, h2, h3, h4, h5, h6, .font-display {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(250% + 150px);
-  height: calc(250% + 150px);
+  width: calc(250% + 350px);
+  height: calc(250% + 350px);
   background: conic-gradient(from 0deg at 50% 50%, transparent 40%, #CCFF00 50%, transparent 60%);
   animation: rotate-gradient 4s linear infinite;
   transform: translate(-50%, -50%);
