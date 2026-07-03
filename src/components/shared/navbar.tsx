@@ -17,17 +17,16 @@ interface navigation {
   href: string
 }
 
-
 // TODO: To make the navigation dynamic
 const navLinks: { [key: string]: navigation[] } = {
   "": [
-    { label: "Home", href: "#home" },
-    { label: "Pillars", href: "#pillars" },
-    { label: "Tracks", href: "#tracks" },
-    { label: "Projects", href: "#projects" },
-    { label: "Events", href: "#events" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Connect", href: "#connect" },
+    { label: "Home", href: "/#home" },
+    { label: "Pillars", href: "/#pillars" },
+    { label: "Tracks", href: "/#tracks" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Events", href: "/#events" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Connect", href: "/#connect" },
   ],
   "admin": AdminSidebar
 };
