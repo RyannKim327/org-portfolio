@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
+import { AdminSidebar } from "@/lib/admin-sidebar"
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { supabaseConfig } from "@/lib/supabase-auth";
@@ -29,7 +29,7 @@ const navLinks: { [key: string]: navigation[] } = {
     { label: "FAQ", href: "#faq" },
     { label: "Connect", href: "#connect" },
   ],
-  "admin": []
+  "admin": AdminSidebar
 };
 
 export function Navbar() {
@@ -40,16 +40,16 @@ export function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(path !== "admin")
 
   // TODO: To use the path as key for the navigation of each webpage
-  if (path.split("/")[0] === "admin") {
-    useEffect(() => {
-      (async () => {
-        const { data: { user } } = await supabaseConfig.auth.getUser()
-        if (user?.aud === "authenticated") {
-          setIsAuthenticated(true)
-        }
-      })()
-    }, [])
-  }
+  // if (path.split("/")[0] === "admin") {
+  //   useEffect(() => {
+  //     (async () => {
+  //       const { data: { user } } = await supabaseConfig.auth.getUser()
+  //       if (user?.aud === "authenticated") {
+  //         setIsAuthenticated(true)
+  //       }
+  //     })()
+  //   }, [])
+  // }
 
   return (
     <header

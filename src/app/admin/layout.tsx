@@ -5,28 +5,8 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { supabaseConfig } from '@/lib/supabase-auth';
+import { AdminSidebar } from "@/lib/admin-sidebar"
 import SidebarHeader from "@/components/ui/sidebar-header";
-import { div } from "framer-motion/client";
-
-
-const sidebar = [
-  {
-    label: "Home",
-    href: ""
-  },
-  {
-    label: "Events",
-    href: "events"
-  },
-  {
-    label: "Testimonials",
-    href: "testimonies",
-  },
-  {
-    label: "Users",
-    href: "users"
-  }
-]
 
 export default function Admin(
   { children }: { children: React.ReactNode }
@@ -78,7 +58,7 @@ export default function Admin(
     <section
       className="flex flex-row relative h-screen w-full gap-2 items-start justify-start overflow-hidden pt-22"
     >
-      <div className="flex flex-col w-[calc(30%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden">
+      <div className="hidden md:flex flex-col bg-background w-[calc(30%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden">
         <div className="flex relative w-full h-[calc(25%-0.5rem)] bg-[#0a0a0a]">
           {/* Header Part */}
           <SidebarHeader />
@@ -89,13 +69,13 @@ export default function Admin(
         </div>
 
         {/* Navigation */}
-        <div className="flex flex-col justify-between h-[calc(70%-0.5rem)] w-full">
+        <div className="flex flex-col justify-between h-[calc(70%-0.5rem)] w-full select-none">
           <div
             className="flex flex-col overflow-hidden overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-brand outline-none">
             {
-              sidebar.map((component) => {
+              AdminSidebar.map((component) => {
                 return (
-                  roles.includes(component.href.toLowerCase()) || roles.includes("all") || component.href === "" ?
+                  roles.includes(component.href.toLowerCase()) || roles.includes("all") || component.all ?
                     <Link className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-in-out delay-150`}>
                         &gt;_
