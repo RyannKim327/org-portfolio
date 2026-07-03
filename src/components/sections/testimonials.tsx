@@ -1,30 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { Card } from "@/components/ui/card";
-
-const testimonials = [
-  {
-    name: "Alex Rivera",
-    role: "Frontend Developer",
-    quote: "Ground Zero gave me the space to collaborate on real production-grade code. The feedback loops here helped me advance my framework knowledge faster than any self-study course.",
-    initials: "AR",
-  },
-  {
-    name: "Mia Santos",
-    role: "UI/UX Designer",
-    quote: "The interactive design reviews at Ground Zero are incredibly valuable. It's refreshing to work side-by-side with engineers who are eager to bring design prototypes to life.",
-    initials: "MS",
-  },
-  {
-    name: "Jordan Kim",
-    role: "Security Engineer",
-    quote: "Participating in community CTFs and security walkthroughs kept me motivated. GZ is a fantastic place to share knowledge and discuss real-world infrastructure vulnerabilities.",
-    initials: "JK",
-  },
-];
+import { get } from "@/lib/api";
+import { defaultParams, testimonialsProperties } from "@/interfaces";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -44,6 +25,27 @@ const cardVariants = {
 };
 
 export function Testimonials() {
+  const [testimonials, setTestimonials] = useState<testimonialsProperties[] | null>(null)
+
+  useEffect(() => {
+    (async () => {
+      const data = await get("testimonials", {
+        start: 0,
+        limit: 3
+      }) as testimonialsProperties[] | defaultParams
+
+      // TODO: To check whether the data is array or not
+      // this is to prevent the error in buildin
+      if (!Array.isArray(data)) {
+        if (data.error) {
+          return console.error(`ERR [Testimonials]: ${data.error}`)
+        }
+      }
+
+      setTestimonials(data as testimonialsProperties[])
+    })()
+  }, [])
+
   return (
     <section id="testimonials" className="relative py-20 sm:py-24 border-t border-white/[0.04]">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -74,35 +76,70 @@ export function Testimonials() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
-          {testimonials.map((t) => (
-            <motion.div key={t.name} variants={cardVariants}>
-              <Card className="h-full flex flex-col justify-between p-5 relative hover:border-brand/35 transition-all duration-300">
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <div className="space-y-4">
-                    <Quote size={16} className="text-brand/40" />
-                    <p className="text-xs text-foreground-secondary leading-relaxed italic">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                  </div>
+          {testimonials ?
+            testimonials.map((t: testimonialsProperties) => {
+              return (
+                <motion.div key={t.name} variants={cardVariants}>
+                  <Card className="h-full flex flex-col justify-between p-5 relative hover:border-brand/35 transition-all duration-300">
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                      <div className="space-y-4">
+                        <Quote size={16} className="text-brand/40" />
+                        <p className="text-xs text-foreground-secondary leading-relaxed italic">
+                          &ldquo;{t.quote}&rdquo;
+                        </p>
+                      </div>
 
-                  {/* Profile info */}
-                  <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-muted text-[10px] font-bold text-brand tracking-wider shrink-0 select-none">
-                      {t.initials}
+                      {/* Profile info */}
+                      <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-muted text-[10px] font-bold text-brand tracking-wider shrink-0 select-none">
+                          {t.name.split(" ")[0]}{t.name.split(" ")[1] ?? ""}
+                        </div>
+                        <div>
+                          <h4 className="text-xs font-semibold text-white leading-tight">
+                            {t.name}
+                          </h4>
+                          <p className="text-[10px] text-foreground-muted">
+                            {t.roles.role}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-xs font-semibold text-white leading-tight">
-                        {t.name}
-                      </h4>
-                      <p className="text-[10px] text-foreground-muted">
-                        {t.role}
-                      </p>
+                  </Card>
+                </motion.div>
+              )
+            }) :
+            Array.from({ length: 3 }).map((_) => {
+              return (
+                <Card className="h-full flex flex-col justify-between p-5 relative overflow-hidden">
+                  <div className="flex flex-col h-full justify-between animate-pulse">
+                    test
+                    <div className="space-y-4">
+                      {/* Quote icon */}
+                      <div className="h-4 w-4 rounded bg-white/10" />
+
+                      {/* Quote */}
+                      <div className="space-y-2">
+                        <div className="h-3 w-full rounded bg-white/10" />
+                        <div className="h-3 w-11/12 rounded bg-white/10" />
+                        <div className="h-3 w-10/12 rounded bg-white/10" />
+                        <div className="h-3 w-7/12 rounded bg-white/10" />
+                      </div>
+                    </div>
+
+                    {/* Profile */}
+                    <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-white/10 shrink-0" />
+
+                      <div className="flex-1 space-y-2">
+                        <div className="h-3 w-24 rounded bg-white/10" />
+                        <div className="h-2 w-16 rounded bg-white/10" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                </Card>
+              )
+            })
+          }
         </motion.div>
       </div>
     </section>
