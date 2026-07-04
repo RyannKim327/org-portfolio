@@ -63,7 +63,7 @@ export default function Admin(
           {/* Header Part */}
           <SidebarHeader />
           <div className={`flex flex-col absolute w-full h-full ${username.length <= 30 ? "px-5 py-4" : "px-3 py-2"} wrap-anywhere`}>
-            <span className={`text-lg`}>@{username.substring(0, 20)} {username.length > 20 ? "..." : ""}</span>
+            <span className={`text-lg`}><span className="text-branch text-[0.85rem]">@</span>{username.substring(0, 20)} {username.length > 20 ? "..." : ""}</span>
             <span className={`pl-5 ${role.length <= 10 ? "text-sm" : "text-xs"}`}>{role}</span>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Admin(
                 return (
                   roles.includes(component.href.toLowerCase()) || roles.includes("all") || component.all ?
                     <Link className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
-                      <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-in-out delay-150`}>
+                      <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-out delay-150`}>
                         &gt;_
                       </span>
                       <span>{component.label}</span>
