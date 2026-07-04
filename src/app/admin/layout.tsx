@@ -49,7 +49,7 @@ export default function Admin(
   const path = usePathname().toLowerCase()
 
   const username = "thekeylangtinapay"
-  const roles = [
+  const permission = [
     "all",
   ]
   const role = "Tambay"
@@ -75,7 +75,7 @@ export default function Admin(
             {
               AdminSidebar.map((component) => {
                 return (
-                  roles.includes(component.href.toLowerCase()) || roles.includes("all") || component.all ?
+                  permission.includes(component.href.toLowerCase()) || permission.includes("all") || component.all ?
                     <Link className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-out delay-150`}>
                         &gt;_
@@ -99,9 +99,9 @@ export default function Admin(
       </div>
       <div className="w-full h-full px-2 overflow-hidden">
         {
-          roles.includes(path.substring(1).split("/")[1])
+          permission.includes(path.substring(1).split("/")[1])
             || /\/admin$/.test(path)
-            || roles.includes("all")
+            || permission.includes("all")
             ?
             children
             :
