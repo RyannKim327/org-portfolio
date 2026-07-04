@@ -1,4 +1,6 @@
 import { Card } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const events = [
   {
@@ -53,7 +55,7 @@ export default function EventsPage() {
       <span>Events Lists</span>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 p-2 w-full">
         {
-          events.map((event) => {
+          events.map((event, i) => {
             return (
               <Card
                 className="flex flex-col gap-2 cursor-pointer"
@@ -66,6 +68,9 @@ export default function EventsPage() {
                   <span className="text-xs">{event.date} - {event.location}</span>
                 </div>
                 <blockquote className="text-sm border-l-3 pl-2 border-l-brand border-l-solid">&emsp;{event.description}</blockquote>
+                <Link
+                  className="flex text-brand"
+                  href={`/events/${i}`}>Go Here <ArrowRight /></Link>
               </Card>
             )
           })
