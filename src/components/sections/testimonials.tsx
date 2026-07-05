@@ -108,9 +108,9 @@ export function Testimonials() {
                 </motion.div>
               )
             }) :
-            Array.from({ length: 3 }).map((_) => {
+            Array.from({ length: 3 }).map((_, i) => {
               return (
-                <Card className="h-full flex flex-col justify-between p-5 relative overflow-hidden">
+                <Card key={i} className="h-full flex flex-col justify-between p-5 relative overflow-hidden">
                   <div className="flex flex-col h-full justify-between animate-pulse">
                     test
                     <div className="space-y-4">

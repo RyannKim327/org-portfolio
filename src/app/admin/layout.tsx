@@ -1,16 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { supabaseConfig } from '@/lib/supabase-auth';
 import { AdminSidebar } from "@/lib/admin-sidebar"
 import SidebarHeader from "@/components/ui/sidebar-header";
+import { usePathname } from "next/navigation";
 
 export default function Admin(
   { children }: { children: React.ReactNode }
 ) {
+  const pathname = usePathname()
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const login = async () => {
@@ -46,7 +47,7 @@ export default function Admin(
     );
   }
 
-  const path = usePathname().toLowerCase()
+  const path = pathname ? pathname.toLowerCase() : ""
 
   const username = "thekeylangtinapay"
   const permission = [

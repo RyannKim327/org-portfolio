@@ -58,6 +58,7 @@ export default function EventsPage() {
           events.map((event, i) => {
             return (
               <Card
+                key={i}
                 className="flex flex-col gap-2 cursor-pointer"
                 beam={event.status === "ongoing"}>
                 <div className="flex flex-col">

@@ -67,9 +67,11 @@ export default function Events() {
       </form>
       <div className="flex flex-col h-full w-[calc(30%-0.5rem)] gap-2 overflow-hidden overflow-y-auto scrollbar-track-transparent scrollbar-thumb-brand">
         {
-          events.map((event) => {
+          events.map((event, i) => {
             return (
-              <Card className="flex flex-col gap-2 cursor-pointer">
+              <Card
+                className="flex flex-col gap-2 cursor-pointer"
+                key={i}>
                 <div className="flex flex-col">
                   <span>{event.title}</span>
                   <span className="text-xs">{event.date} - {event.location}</span>
