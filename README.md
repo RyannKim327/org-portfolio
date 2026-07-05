@@ -74,7 +74,7 @@ The application interacts with and joins a set of tables in Supabase. Run the fo
 #### 1. `roles` Table
 ```sql
 create table public.roles (
-  id uuid not null default gen_random_uuid (),
+  id uuid not null default gen_random_uuid(),
   role character varying not null,
   permission text[] null,
   constraint roles_pkey primary key (id)
@@ -172,6 +172,9 @@ erDiagram
         UUID id PK
         VARCHAR username UK
         UUID role FK
+        VARCHAR first_name
+        VARCHAR last_name
+        timestamp created_at
     }
 
     TESTIMONIALS {
