@@ -215,6 +215,7 @@ erDiagram
     ROLES ||--|| USERS : assigned
     ROLES ||--|| TESTIMONIALS : represents
     DISCUSSIONS ||--|{ EVENTS : assigned
+    USERS o|--|{ EVENTS : assigned
 ```
 
 ---
