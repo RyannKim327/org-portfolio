@@ -61,7 +61,7 @@ export default function Events() {
         {/* Action buttons */}
         <div className="flex justify-end w-full gap-2">
           <Button variant="outline" type="submit">Create event</Button>
-          <Button variant="solid" className="bg-error text-white hover:bg-error/75" type="submit">Clear</Button>
+          <Button variant="solid" className="bg-error text-white hover:bg-error/75" type="reset">Clear</Button>
         </div>
       </form>
       <div className="flex flex-col h-full w-[calc(30%-0.5rem)] gap-2 overflow-hidden overflow-y-auto scrollbar-track-transparent scrollbar-thumb-brand">
