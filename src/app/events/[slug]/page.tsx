@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Send, Calendar, MapPin, ArrowRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 // TODO: Dumy data for events and in layouting
 const events = [
@@ -90,6 +91,15 @@ export default async function EventsDiscussion({ params }: PageProps) {
   const param = await params;
 
   // TODO: This part must be a call from API.
+  const digit = /\d/
+  if (param.slug) {
+    if (!digit.test(param?.slug)) {
+      redirect("/")
+    }
+  } else {
+    redirect("/")
+  }
+
   const eventIndex = parseInt(param.slug ?? "0");
   const event = events[eventIndex] || events[0];
   const user = "jampol";
