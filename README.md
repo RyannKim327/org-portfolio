@@ -206,7 +206,7 @@ erDiagram
     
     DISCUSSIONS {
       BIGINT id pk
-      UUID EVENT_ID fk
+      BIGINT EVENT_ID fk
       VARCHAR username
       VARCHAR message
       TIMESTAMP created_at 
