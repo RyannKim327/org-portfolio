@@ -283,4 +283,4 @@ Please read our [**CONTRIBUTING.md**](file:///c:/Users/0x3EF8/Desktop/GZ/ground-
 - **Discord Server**: [Join Discord](https://discord.gg/4H2v6UwjmY)
 - **Facebook Page**: [Follow Page](https://www.facebook.com/GroundZeroDigital/)
 - **Facebook Group**: [Join Group](https://www.facebook.com/groups/groundzerocommunity/)
-- **GitHub Organization**: [View Codebases](https://github.com/GroundZero-Community)
+- **GitHub Organization**: [View Codebases](https://github.com/GroundZeroCommunity)
