@@ -69,8 +69,8 @@ export default function EventsPage() {
                 </div>
                 <blockquote className="text-sm border-l-3 pl-2 border-l-brand border-l-solid">&emsp;{event.description}</blockquote>
                 <Link
-                  className="flex text-brand"
-                  href={`/events/${i}`}>Go Here <ArrowRight /></Link>
+                  className="flex text-brand items-center gap-2"
+                  href={`/events/${i}`}>Go Here <ArrowRight size={15} /></Link>
               </Card>
             )
           })
