@@ -34,7 +34,8 @@ const navLinks: { [key: string]: navigation[] } = {
 export function Navbar() {
   const scrolled = useScroll(20);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const path = usePathname().substring(1).toLowerCase()
+  const pathname = usePathname()
+  const path = pathname ? pathname.substring(1).toLowerCase() : ""
 
   const [isAuthenticated, setIsAuthenticated] = useState(path !== "admin")
 

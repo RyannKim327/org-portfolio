@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This `CHANGELOG.md` file for systematic version and release tracking.
 - `Admin` Panel for dynamic announcement.
 - `Events Page` for dynamic control in posting announcements and happenings.
+- `Events Discussion page` for inquiries and further announcements related to each event.
 - Custom ui/widget `input` and `textarea` for forms.
 - Custom active panel indicator.
 - Admin sidebar navigation with header and user logged in role and username.
