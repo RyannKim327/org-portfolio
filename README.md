@@ -88,6 +88,7 @@ create table public.users (
   username character varying not null,
   first_name character varying null,
   last_name character varying null,
+  bio text null,
   created_at timestamp without time zone not null default now(),
   role uuid null default 'default_outsider_role_id'::uuid, -- You must have the Roles Table and set the default value of this for outsider role
   constraint users_pkey primary key (id),i
@@ -171,6 +172,7 @@ erDiagram
         UUID role FK
         VARCHAR first_name
         VARCHAR last_name
+        TEXT bio
         TIMESTAMP created_at
     }
 
