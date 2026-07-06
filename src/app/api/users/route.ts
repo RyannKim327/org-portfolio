@@ -5,9 +5,15 @@ export async function PUT(request: Request) {
 
   // TODO: To add an update for user information
 
-  return Response.json({
-    message: "Test"
-  })
+  const { data, error } = await supabaseConfig
+    .from("users")
+    .update({
+      first_name: body.first_name,
+      last_name: body.last_name,
+      bio: body.bio
+    })
+
+  return Response.json(data || error)
 }
 
 export async function GET(request: Request) {
