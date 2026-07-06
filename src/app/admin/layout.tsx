@@ -53,7 +53,7 @@ export default function Admin(
 
   const username = "sleepingtoad"
   const permission = [
-    "all",
+    "users",
   ]
   const role = "Tambay"
 
@@ -105,7 +105,7 @@ export default function Admin(
             </Button>
 
             <Link
-              className="text-red-400 outline-none"
+              className="text-red-400 outline-none text-center md:text-left"
               href="">
               <span className="select-none text-transparent">&gt;_ </span>
               <span>Logout</span>
