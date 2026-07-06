@@ -109,14 +109,16 @@ export default function UsersPage() {
             }}
             className="flex flex-col items-center justify-center w-full h-full fixed left-0 right-0 top-0 bottom-0 bg-background/5 backdrop-blur-sm z-100">
 
-            <Card className="flex flex-col min-w-3/4">
+            <Card className="flex flex-col min-w-1/2">
               <div
                 className="flex justify-between border-b-2 border-brand border-b-solid mb-2">
                 <span
                   className="text-xl">User Profile Information:</span>
                 <X className="cursor-pointer" onClick={() => { setModalId(null) }} />
               </div>
-              <span>Name: {modalId.username}</span>
+              <span>Username: {modalId.username}</span>
+              <span>Full name: {modalId.first_name ?? ""} {modalId.last_name ?? ""}</span>
+              <span>Role: {modalId.role}</span>
             </Card>
 
           </div>
