@@ -85,7 +85,7 @@ export default function UsersPage() {
                         ? "border-brand/30 text-brand bg-brand/5"
                         : user.role === "Moderator"
                           ? "border-purple-500/30 text-purple-400 bg-purple-500/5"
-                          : "border-white/10 text-foreground-secondary"
+                          : user.role.includes("Security") ? "border-orange-500 text-orange-400 bg-orange-500/5" : "border-white/10 text-foreground-secondary"
                     }
                   >
                     {user.role}
@@ -108,7 +108,6 @@ export default function UsersPage() {
               setModalId(null)
             }}
             className="flex flex-col items-center justify-center w-full h-full fixed left-0 right-0 top-0 bottom-0 bg-background/5 backdrop-blur-sm z-100">
-
             <Card className="flex flex-col min-w-1/2">
               <div
                 className="flex justify-between border-b-2 border-brand border-b-solid mb-2">
