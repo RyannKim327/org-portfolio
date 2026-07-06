@@ -6,11 +6,15 @@ export const AdminSidebar = [
   },
   {
     label: "Events",
-    href: "events"
+    href: "events",
   },
   {
     label: "Projects",
     href: "projects"
+  },
+  {
+    label: "Roles & Permissions",
+    href: "permissions"
   },
   {
     label: "Testimonials",

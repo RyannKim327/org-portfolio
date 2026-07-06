@@ -53,7 +53,7 @@ export default function Admin(
 
   const username = "sleepingtoad"
   const permission = [
-    "users",
+    "all",
   ]
   const role = "Tambay"
 
@@ -80,7 +80,7 @@ export default function Admin(
             {
               AdminSidebar.map((component) => {
                 return (
-                  permission.includes(component.href.toLowerCase()) || permission.includes("all") || component.all ?
+                  permission.includes(component.href.toLowerCase()) || role.toLowerCase().startsWith("admin") || permission.includes("all") || component.all ?
                     <Link onClick={() => { setToggleMenu(false) }} className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-out delay-150`}>
                         &gt;_
