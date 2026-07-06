@@ -1,5 +1,10 @@
+"use client"
+
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { defaultParams } from "@/interfaces";
+import { X } from "lucide-react";
 
 const users = [
   {
@@ -45,6 +50,8 @@ const users = [
 ];
 
 export default function UsersPage() {
+  const [modalId, setModalId] = useState<defaultParams | null>(null)
+
   return (
     <div className="flex flex-col h-full w-full gap-4 overflow-hidden">
       <div className="flex justify-between items-center">
@@ -57,7 +64,12 @@ export default function UsersPage() {
       <div className="flex-1 overflow-y-auto scrollbar-track-transparent scrollbar-thumb-brand pr-1 pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {users.map((user) => (
-            <Card key={user.id} className="flex flex-col gap-3 justify-between bg-card-bg/60">
+            <Card
+              onClick={() => {
+                setModalId(user)
+              }}
+              key={user.id}
+              className="flex flex-col gap-3 cursor-pointer justify-between bg-card-bg/60">
               <div className="flex flex-col gap-1.5">
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col">
@@ -89,6 +101,27 @@ export default function UsersPage() {
           ))}
         </div>
       </div>
+      {
+        modalId !== null ?
+          <div
+            onClick={() => {
+              setModalId(null)
+            }}
+            className="flex flex-col items-center justify-center w-full h-full fixed left-0 right-0 top-0 bottom-0 bg-background/5 backdrop-blur-sm z-100">
+
+            <Card className="flex flex-col min-w-3/4">
+              <div
+                className="flex justify-between border-b-2 border-brand border-b-solid mb-2">
+                <span
+                  className="text-xl">User Profile Information:</span>
+                <X className="cursor-pointer" onClick={() => { setModalId(null) }} />
+              </div>
+              <span>Name: {modalId.username}</span>
+            </Card>
+
+          </div>
+          : null
+      }
     </div>
   );
 }
