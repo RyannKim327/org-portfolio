@@ -63,7 +63,7 @@ export default function Admin(
     >
       <div
         className={`${toggleMenu ? "left-0" : "-left-[calc(75%-0.5rem)] md:left-0"} absolute z-10 md:z-0 md:static flex flex-col bg-background w-[calc(70%-0.5rem)] md:w-[calc(30%-0.5rem)] h-full border-r border-white border-solid gap-3 overflow-hidden transition-all delay-150`}>
-        <div className="flex relative w-full h-[calc(25%-0.5rem)] bg-[#0a0a0a]">
+        <div className="flex relative w-full z-10 h-[calc(25%-0.5rem)] bg-[#0a0a0a]">
           {/* Header Part */}
           <SidebarHeader />
           <div className={`flex flex-col absolute w-full h-full ${username.length <= 30 ? "px-5 py-4" : "px-3 py-2"} wrap-anywhere`}>
@@ -73,7 +73,8 @@ export default function Admin(
         </div >
 
         {/* Navigation */}
-        < div className="flex flex-col justify-between h-[calc(70%-0.5rem)] w-full select-none" >
+        <div
+          className="flex flex-col justify-between h-[calc(70%-1rem)] w-full select-none">
           <div
             className="flex flex-col overflow-hidden overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-brand outline-none">
             {
@@ -93,14 +94,25 @@ export default function Admin(
           </div>
 
           {/* Footer part */}
-          <Link
-            className="text-red-400 px-2 py-3 outline-none"
-            href="">
-            <span className="text-transparent">&gt;_ </span>
-            <span>Logout</span>
-          </Link>
-        </div >
-      </div >
+          <div className="flex flex-col justify-end h-[calc(25%-1rem)] w-full p-5 gap-3">
+            <Button
+              className="md:hidden"
+              variant="solid"
+              size="sm"
+              href="https://discord.gg/4H2v6UwjmY"
+            >
+              Join Discord
+            </Button>
+
+            <Link
+              className="text-red-400 outline-none"
+              href="">
+              <span className="select-none text-transparent">&gt;_ </span>
+              <span>Logout</span>
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className="w-full h-full px-2 overflow-hidden">
         {
           permission.includes(path.substring(1).split("/")[1])
