@@ -1,51 +1,56 @@
 // TODO: To setup dummy data for api call
+import { eventsProperties } from "@/interfaces";
 import { supabaseConfig } from "@/lib/supabase";
 
 // INFO: This is just a dummy data to use for this endpoint
 
-const events = [
+const events: eventsProperties = [
   {
     title: "Weekly Code Jam #42",
     description: "Bring your projects, collaborate with peers, ask questions, and build together in real time.",
-    date: "Jul 04, 2026",
-    time: "7:00 PM - 9:00 PM PST",
+    started: "Jul 04, 2026",
+    end: "Jul 04, 2026",
     location: "Discord Voice Channels",
     status: "registration open",
     type: "Virtual",
-    actionText: "RSVP on Discord",
+    action: "RSVP on Discord",
     href: "https://discord.gg/4H2v6UwjmY",
+    created_at: "Jun 29, 2026"
   },
   {
     title: "Introduction to System Design",
     description: "Learn how to design scalable architectures, microservices, databases, and caching layers.",
-    date: "Jul 11, 2026",
-    time: "6:00 PM - 7:30 PM PST",
+    started: "Jul 11, 2026",
+    end: "Jul 12, 2026",
     location: "Discord Stage Channel",
     status: "upcoming",
     type: "Workshop",
-    actionText: "Set Reminder",
+    action: "Set Reminder",
     href: "https://discord.gg/4H2v6UwjmY",
+    created_at: "Jun 20, 2026"
   },
   {
     title: "ZeroToHero hackathon 2026",
     description: "A 48-hour challenge to design and build open-source products that solve real-world problems.",
-    date: "Jul 24 - 26, 2026",
-    time: "Weekend Event",
+    started: "Jul 24 - 26, 2026",
+    end: "Weekend Event",
     location: "Hybrid (Discord & Local Hubs)",
     status: "upcoming",
     type: "Hackathon",
-    actionText: "Register Team",
+    action: "Register Team",
     href: "https://discord.gg/4H2v6UwjmY",
+    created_at: "Jul 1, 2026"
   },
   {
     title: "Goodnight with GZ in DC",
     description: "A night session with us in development",
-    date: "July 1, 2026 to July 30, 2026 5pm to 5am",
+    started: "July 1, 2026 to July 30, 2026 5pm to 5am",
     location: "Discord Server",
     status: "ongoing",
     type: "Bonding Session",
-    actionText: "Join with us",
+    action: "Join with us",
     href: "https://discord.gg/4H2v6UwjmY",
+    created_at: "Jun 1, 2026"
   },
 ];
 
