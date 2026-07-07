@@ -1,47 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const events = [
-  {
-    title: "Weekly Code Jam #42",
-    description: "Bring your projects, collaborate with peers, ask questions, and build together in real time.",
-    date: "Jul 04, 2026",
-    time: "7:00 PM - 9:00 PM PST",
-    location: "Discord Voice Channels",
-    status: "registration open",
-    type: "Virtual",
-    actionText: "RSVP on Discord",
-    href: "https://discord.gg/4H2v6UwjmY",
-  },
-  {
-    title: "Introduction to System Design",
-    description: "Learn how to design scalable architectures, microservices, databases, and caching layers.",
-    date: "Jul 11, 2026",
-    time: "6:00 PM - 7:30 PM PST",
-    location: "Discord Stage Channel",
-    status: "upcoming",
-    type: "Workshop",
-    actionText: "Set Reminder",
-    href: "https://discord.gg/4H2v6UwjmY",
-  },
-  {
-    title: "ZeroToHero hackathon 2026",
-    description: "A 48-hour challenge to design and build open-source products that solve real-world problems.",
-    date: "Jul 24 - 26, 2026",
-    time: "Weekend Event",
-    location: "Hybrid (Discord & Local Hubs)",
-    status: "upcoming",
-    type: "Hackathon",
-    actionText: "Register Team",
-    href: "https://discord.gg/4H2v6UwjmY",
-  },
-];
+import { get } from "@/lib/api";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -61,6 +26,16 @@ const itemVariants = {
 };
 
 export function Events() {
+
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      const data = await get('events')
+      setEvents(data)
+    })()
+  }, [])
+
   return (
     <section id="events" className="relative py-20 sm:py-24 border-t border-white/[0.04]">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -105,10 +80,10 @@ export function Events() {
                         <Calendar size={10} className="text-brand" />
                         {event.date}
                       </span>
-                      <span className="text-[10px] text-foreground-muted uppercase tracking-wider flex items-center gap-1">
-                        <Clock size={10} className="text-brand" />
-                        {event.time}
-                      </span>
+                      {/* <span className="text-[10px] text-foreground-muted uppercase tracking-wider flex items-center gap-1"> */}
+                      {/*   <Clock size={10} className="text-brand" /> */}
+                      {/*   {event.time} */}
+                      {/* </span> */}
                     </div>
 
                     <h3 className="text-base font-bold text-white group-hover:text-brand transition-colors duration-300">

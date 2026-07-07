@@ -1,5 +1,38 @@
 import { supabaseConfig } from "@/lib/supabase"
 
+// TODO: This is just a temporary data to handle
+const projects = [
+  {
+    name: "Sample",
+    type: "Web",
+    contributors: ["tinapay", "RyannKim327", "Mra1ko"],
+    created_at: "Jan 1, 2026",
+    last_update: "Jul 7, 2026"
+  },
+  {
+    name: "iNotify",
+    type: "Mobile",
+    contributors: ["mjason", "RyannKim327", "Mra1ko"],
+    created_at: "Jan 1, 2026",
+    last_update: "Jul 7, 2026"
+  },
+  {
+    name: "Pentest",
+    type: "Cyber Security",
+    contributors: ["tinapay", "RyannKim327", "jampol"],
+    created_at: "Jan 1, 2026",
+    last_update: "Jul 7, 2026"
+  },
+  {
+    name: "Start to Contrib",
+    type: "Utilities",
+    contributors: ["tinapay", "RyannKim327", "Mra1ko", "hellolord"],
+    created_at: "Jan 1, 2026",
+    last_update: "Jul 7, 2026"
+  }
+]
+
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const query = Object.fromEntries(searchParams.entries())
@@ -18,6 +51,8 @@ export async function GET(request: Request) {
   // TODO: Converting string to numbers through parseInt
   const limit: number = parseInt(query.limit ?? "6")
   const index: number = parseInt(query.page ?? "0")
+
+  return Response.json(projects)
 
   const { data, error } = await supabaseConfig
     .from("projects")

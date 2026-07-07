@@ -1,38 +1,20 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-
-const projects = [
-  {
-    name: "Sample",
-    type: "Web",
-    contributors: ["tinapay", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
-  },
-  {
-    name: "iNotify",
-    type: "Mobile",
-    contributors: ["tinapay", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
-  },
-  {
-    name: "Pentest",
-    type: "Cyber Security",
-    contributors: ["tinapay", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
-  },
-  {
-    name: "Start to Contrib",
-    type: "Utilities",
-    contributors: ["tinapay", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
-  }
-]
+import { get } from "@/lib/api"
+import { useEffect, useState } from "react"
 
 export default function ProjectsPage() {
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      const data = await get("projects")
+      setProjects(data)
+    })()
+  }, [])
+
   return (
     <div className="flex flex-col h-full w-full gap-4 overflow-hidden">
       <div className="flex justify-between items-center">
