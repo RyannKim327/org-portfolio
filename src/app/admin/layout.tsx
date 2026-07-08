@@ -8,6 +8,8 @@ import { AdminSidebar } from "@/lib/admin-sidebar"
 import SidebarHeader from "@/components/ui/sidebar-header";
 import { usePathname } from "next/navigation";
 import BaseAdminLayout from "@/components/shared/admin/base-layout";
+import { get } from "@/lib/api";
+import { rolesProperties } from "@/interfaces";
 
 export default function Admin(
   { children }: { children: React.ReactNode }
@@ -15,6 +17,10 @@ export default function Admin(
   const pathname = usePathname()
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [toggleMenu, setToggleMenu] = useState(true)
+
+  const [username, setUsername] = useState("")
+  const [permissions, setPermissions] = useState<string[]>([])
+  const [role, setRole] = useState("")
 
   const login = async () => {
     await supabaseConfig.auth.signInWithOAuth({
@@ -25,14 +31,23 @@ export default function Admin(
     })
   }
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const { data: { user } } = await supabaseConfig.auth.getUser()
-  //     if (user?.aud === "authenticated") {
-  //       setIsAuthenticated(true)
-  //     }
-  //   })()
-  // }, [])
+  useEffect(() => {
+    // (async () => {
+    //   const { data: { user } } = await supabaseConfig.auth.getUser()
+    //   if (user?.aud === "authenticated") {
+    //     setIsAuthenticated(true)
+    //   }
+    // })();
+    setUsername("Santol");
+
+    (async () => {
+      const data = await get("users/roles", {
+        id: "sekyu"
+      }) as rolesProperties
+      setPermissions(data.permissions)
+      setRole(data.role)
+    })()
+  }, [])
 
   if (!isAuthenticated) {
     return (
@@ -50,12 +65,6 @@ export default function Admin(
   }
 
   const path = pathname ? pathname.toLowerCase() : ""
-
-  const username = "sleepingtoad"
-  const permission = [
-    "all",
-  ]
-  const role = "Tambay"
 
   return (
     <section
@@ -80,7 +89,7 @@ export default function Admin(
             {
               AdminSidebar.map((component) => {
                 return (
-                  permission.includes(component.href.toLowerCase()) || role.toLowerCase().startsWith("admin") || permission.includes("all") || component.all ?
+                  permissions.includes(component.href.toLowerCase()) || role.toLowerCase().startsWith("admin") || permissions.includes("all") || component.all ?
                     <Link onClick={() => { setToggleMenu(false) }} className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-out delay-150`}>
                         &gt;_
@@ -115,9 +124,9 @@ export default function Admin(
       </div>
       <div className="w-full h-full px-2 overflow-hidden">
         {
-          permission.includes(path.substring(1).split("/")[1])
+          permissions.includes(path.substring(1).split("/")[1])
             || /\/admin$/.test(path)
-            || permission.includes("all")
+            || permissions.includes("all")
             ?
             <BaseAdminLayout toggleMenu={setToggleMenu}>{children}</BaseAdminLayout>
             :
@@ -128,6 +137,6 @@ export default function Admin(
             </div>
         }
       </div>
-    </section >
+    </section>
   )
 }

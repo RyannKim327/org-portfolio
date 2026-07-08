@@ -76,7 +76,7 @@ The application interacts with and joins a set of tables in Supabase. Run the fo
 create table public.roles (
   id uuid not null default gen_random_uuid(),
   role character varying not null,
-  permission text[] null,
+  permissions text[] null,
   constraint roles_pkey primary key (id)
 ) TABLESPACE pg_default;
 ```
@@ -163,7 +163,7 @@ erDiagram
     ROLES {
         UUID id PK
         VARCHAR role
-        TEXT[] permission
+        TEXT[] permissions
     } 
 
     USERS {
