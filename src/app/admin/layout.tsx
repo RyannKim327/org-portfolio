@@ -39,10 +39,9 @@ export default function Admin(
     //   }
     // })();
     setUsername("Santol");
-
     (async () => {
       const data = await get("users/roles", {
-        id: "sekyu"
+        id: "admin123"
       }) as rolesProperties
       setPermissions(data.permissions)
       setRole(data.role)

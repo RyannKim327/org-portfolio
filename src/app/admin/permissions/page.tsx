@@ -5,19 +5,14 @@ import { Card } from "@/components/ui/card"
 import { rolesProperties } from "@/interfaces"
 import { get } from "@/lib/api"
 import { ArrowRight } from "lucide-react"
-import { useEffect, useState } from "react"
+import { use, useState } from "react"
+
+const permissionApi = get("users/roles")
 
 export default function RolesPermissions() {
-  const [roles, setRoles] = useState<rolesProperties[]>([])
+  const roles = use(permissionApi) as rolesProperties[]
 
   const [modal, setModal] = useState<rolesProperties | null>(null)
-
-  useEffect(() => {
-    (async () => {
-      const data = await get("users/roles")
-      setRoles(data as rolesProperties[])
-    })()
-  }, [])
 
   return (
     <div className="flex flex-col h-full w-full gap-4 overflow-hidden">

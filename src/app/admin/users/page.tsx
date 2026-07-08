@@ -2,21 +2,16 @@
 
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useState } from "react";
-import { defaultParams } from "@/interfaces";
+import { use, useState } from "react";
+import { defaultParams, usersProperties } from "@/interfaces";
 import { X } from "lucide-react";
 import { get } from "@/lib/api";
 
-export default function UsersPage() {
-  const [modalId, setModalId] = useState<defaultParams | null>(null)
-  const [users, setUsers] = useState([])
+const usersApi = get("users")
 
-  useEffect(() => {
-    (async () => {
-      const data = await get("users")
-      setUsers(data)
-    })()
-  }, [])
+export default function UsersPage() {
+  const [modalId, setModalId] = useState<usersProperties | null>(null)
+  const users = use(usersApi) as usersProperties[]
 
   return (
     <div className="flex flex-col h-full w-full gap-4 overflow-hidden">
@@ -47,14 +42,14 @@ export default function UsersPage() {
                   <Badge
                     variant="outline"
                     className={
-                      user.role === "Admin"
+                      user.role.role === "Admin"
                         ? "border-brand/30 text-brand bg-brand/5"
-                        : user.role === "Moderator"
+                        : user.role.role === "Moderator"
                           ? "border-purple-500/30 text-purple-400 bg-purple-500/5"
-                          : user.role.includes("Security") ? "border-orange-500 text-orange-400 bg-orange-500/5" : "border-white/10 text-foreground-secondary"
+                          : user.role.role.includes("Security") ? "border-orange-500 text-orange-400 bg-orange-500/5" : "border-white/10 text-foreground-secondary"
                     }
                   >
-                    {user.role}
+                    {user.role.role}
                   </Badge>
                 </div>
               </div>
