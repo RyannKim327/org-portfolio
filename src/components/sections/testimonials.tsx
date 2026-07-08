@@ -92,7 +92,7 @@ export function Testimonials() {
                       {/* Profile info */}
                       <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center gap-3">
                         <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-muted text-[10px] font-bold text-brand tracking-wider shrink-0 select-none">
-                          {t.name.split(" ")[0]}{t.name.split(" ")[1] ?? ""}
+                          {t.name.split(" ")[0][0] ?? ""}{t.name.split(" ")[1][0] ?? ""}
                         </div>
                         <div>
                           <h4 className="text-xs font-semibold text-white leading-tight">
@@ -112,7 +112,6 @@ export function Testimonials() {
               return (
                 <Card key={i} className="h-full flex flex-col justify-between p-5 relative overflow-hidden">
                   <div className="flex flex-col h-full justify-between animate-pulse">
-                    test
                     <div className="space-y-4">
                       {/* Quote icon */}
                       <div className="h-4 w-4 rounded bg-white/10" />

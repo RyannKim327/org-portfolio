@@ -28,7 +28,7 @@ const navLinks: { [key: string]: navigation[] } = {
     { label: "FAQ", href: "/#faq" },
     { label: "Connect", href: "/#connect" },
   ],
-  "admin": AdminSidebar
+  "admin": []
 };
 
 export function Navbar() {
@@ -37,7 +37,7 @@ export function Navbar() {
   const pathname = usePathname()
   const path = pathname ? pathname.substring(1).toLowerCase() : ""
 
-  const [isAuthenticated, setIsAuthenticated] = useState(path !== "admin")
+  const [isAdmin, _] = useState(path !== "admin")
 
   // TODO: To use the path as key for the navigation of each webpage
   // if (path.split("/")[0] === "admin") {
@@ -82,7 +82,7 @@ export function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
-            {isAuthenticated && navLinks[path.split("/")[0]] ? navLinks[path.split("/")[0]].map((link: navigation) => (
+            {isAdmin && navLinks[path.split("/")[0]] ? navLinks[path.split("/")[0]].map((link: navigation) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -111,14 +111,14 @@ export function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {navLinks[path.split("/")[0]].length > 0 ? mobileOpen ? <X size={22} /> : <Menu size={22} /> : null}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {(mobileOpen && navLinks[path.split("/")[0]].length > 0) && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
@@ -127,7 +127,7 @@ export function Navbar() {
             className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-b border-white/[0.06]"
           >
             <div className="px-6 py-4 space-y-1">
-              {isAuthenticated && navLinks[path.split("/")[0]] ?
+              {isAdmin && navLinks[path.split("/")[0]] ?
                 navLinks[path.split("/")[0]].map((link: navigation) => (
                   <Link
                     key={link.label}

@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.0] - 2026-07-01
+## [0.2.0] - 07-01-26 - 07-05-26
 
 ### Added
 - Comprehensive environment setup instructions in `README.md` covering Supabase configurations, database schemas, and GitHub OAuth instructions.
@@ -16,10 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom ui/widget `input` and `textarea` for forms.
 - Custom active panel indicator.
 - Admin sidebar navigation with header and user logged in role and username.
+- `User Infomation Management` for members and outside collaborator.
 
 ### Changed
 - Bumped project version to `0.2.0` in `package.json`.
-- `start` to `page` api `GET` method parameter for pagination,
+- `start` to `page` api `GET` method parameter for pagination.
+- Updated User Profile form in `src/app/admin/page.tsx` with proper primary action button and reset handler.
+
+### Fixed 
+- Aligned Mermaid ERD with SQL schemas in `README.md`.
+- Corrected duplicated `public.events` SQL schema under `categories` Table in `README.md`.
 
 ---
 
