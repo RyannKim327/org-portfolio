@@ -37,6 +37,14 @@ export interface eventsProperties extends defaultParams {
   href: string,
 }
 
+export interface projectsProperties extends defaultParams {
+  name: string
+  type: string
+  contributors: string[]
+  created_at: string
+  last_update: string
+}
+
 export interface rolesProperties extends defaultParams {
   id: string
   role: string
