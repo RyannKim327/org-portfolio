@@ -4,20 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { defaultParams } from "@/interfaces";
 import { get } from "@/lib/api";
-import { useEffect, useState } from "react";
+import { use } from "react";
 
+const eventApi = get("events")
 
 export default function Events() {
-  const [events, setEvents] = useState<defaultParams[]>([])
-
-  useEffect(() => {
-    (async () => {
-      const data = await get("events")
-      setEvents(data as defaultParams[])
-    })()
-  }, [])
+  const events = use(eventApi)
 
   return (
     <div className="flex flex-row h-full w-full gap-2">

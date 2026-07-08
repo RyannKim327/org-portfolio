@@ -3,7 +3,7 @@ export type defaultParams = Record<string, unknown>
 
 
 // INFO: Interfaces for models
-export interface categoriesProperties {
+export interface categoriesProperties extends defaultParams {
   id: number
   title: string
   shortLabel: string
@@ -13,7 +13,7 @@ export interface categoriesProperties {
   activities: string[]
 }
 
-export interface discussionProperties {
+export interface discussionProperties extends defaultParams {
   id: number
   event_id: eventsProperties
   username: string
@@ -22,7 +22,7 @@ export interface discussionProperties {
 
 }
 
-export interface eventsProperties {
+export interface eventsProperties extends defaultParams {
   id?: number
   title: string,
   description: string,
@@ -37,13 +37,21 @@ export interface eventsProperties {
   href: string,
 }
 
-export interface rolesProperties {
-  id: string
-  role: string
-  permission: string[]
+export interface projectsProperties extends defaultParams {
+  name: string
+  type: string
+  contributors: string[]
+  created_at: string
+  last_update: string
 }
 
-export interface usersProperties {
+export interface rolesProperties extends defaultParams {
+  id: string
+  role: string
+  permissions: string[]
+}
+
+export interface usersProperties extends defaultParams {
   id: string
   username: string
   first_name: string
@@ -53,7 +61,7 @@ export interface usersProperties {
   role: rolesProperties
 }
 
-export interface testimonialsProperties {
+export interface testimonialsProperties extends defaultParams {
   id: number
   name: string,
   roles: rolesProperties
