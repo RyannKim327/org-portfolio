@@ -6,29 +6,29 @@ const projects = [
     name: "Sample",
     type: "Web",
     contributors: ["tinapay", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
+    created_at: "2026-01-01T12:00:00Z",
+    last_update: "2026-07-07T12:00:00Z"
   },
   {
     name: "iNotify",
     type: "Mobile",
     contributors: ["mjason", "RyannKim327", "Mra1ko"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
+    created_at: "2026-01-01T12:00:00Z",
+    last_update: "2026-07-07T12:00:00Z"
   },
   {
     name: "Pentest",
     type: "Cyber Security",
     contributors: ["tinapay", "RyannKim327", "jampol"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
+    created_at: "2026-01-01T12:00:00Z",
+    last_update: "2026-07-07T12:00:00Z"
   },
   {
     name: "Start to Contrib",
     type: "Utilities",
     contributors: ["tinapay", "RyannKim327", "Mra1ko", "hellolord"],
-    created_at: "Jan 1, 2026",
-    last_update: "Jul 7, 2026"
+    created_at: "2026-01-01T12:00:00Z",
+    last_update: "2026-07-07T12:00:00Z"
   }
 ]
 

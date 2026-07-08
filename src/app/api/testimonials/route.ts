@@ -1,24 +1,40 @@
+import { testimonialsProperties } from "@/interfaces"
 import { supabaseConfig } from "@/lib/supabase"
 
-const testimonials = [
+const testimonials: testimonialsProperties[] = [
   {
+    id: 1,
     name: "Alex Rivera",
-    roles: { role: "Frontend Developer" },
+    roles: {
+      id: "role-frontend-dev",
+      role: "Frontend Developer",
+      permission: ["read", "write"]
+    },
     quote: "Ground Zero gave me the space to collaborate on real production-grade code. The feedback loops here helped me advance my framework knowledge faster than any self-study course.",
-    initials: "AR",
+    created_at: "2026-06-29T12:00:00Z"
   },
   {
+    id: 2,
     name: "Mia Santos",
-    roles: { role: "UI/UX Designer" },
+    roles: {
+      id: "role-uiux-designer",
+      role: "UI/UX Designer",
+      permission: ["read", "write"]
+    },
     quote: "The interactive design reviews at Ground Zero are incredibly valuable. It's refreshing to work side-by-side with engineers who are eager to bring design prototypes to life.",
-    initials: "MS",
+    created_at: "2026-06-30T12:00:00Z"
   },
   {
+    id: 3,
     name: "Jordan Kim",
-    roles: { role: "Security Engineer" },
+    roles: {
+      id: "role-security-engineer",
+      role: "Security Engineer",
+      permission: ["read", "write"]
+    },
     quote: "Participating in community CTFs and security walkthroughs kept me motivated. GZ is a fantastic place to share knowledge and discuss real-world infrastructure vulnerabilities.",
-    initials: "JK",
-  },
+    created_at: "2026-07-01T12:00:00Z"
+  }
 ];
 
 
