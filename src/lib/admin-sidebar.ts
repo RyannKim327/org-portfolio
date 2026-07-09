@@ -19,6 +19,7 @@ export const AdminSidebar = [
   {
     label: "Testimonials",
     href: "testimonies",
+    all: true
   },
   {
     label: "Users",
