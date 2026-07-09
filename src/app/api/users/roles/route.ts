@@ -83,7 +83,10 @@ export async function GET(request: Request) {
 
   const role = query.id
 
-  return Response.json(roles.find(item => item.id === role))
+  if (role) {
+    return Response.json(roles.find(item => item.id === role))
+  }
+  return Response.json(roles)
 
   const { data, error } = await supabaseConfig.from("users").select("roles(role)").eq("id", query.id)
 
