@@ -27,9 +27,9 @@ export default function RolesPermissions() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {
             roles.length > 0 ?
-              roles.map((role: rolesProperties) => {
+              roles.map((role: rolesProperties, i: number) => {
                 return (
-                  <Card className="flex flex-col w-full">
+                  <Card key={i} className="flex flex-col w-full">
                     <span>{role.role}</span>
                     <span>{role.permissions.join(", ")}</span>
                     <span className="flex gap-2 text-brand-darker" onClick={() => { setModal(role) }}>Modify <ArrowRight className="text-xs" /> </span>

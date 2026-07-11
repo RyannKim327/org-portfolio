@@ -18,7 +18,7 @@ export default function Admin(
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [toggleMenu, setToggleMenu] = useState(true)
 
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("optimumpride")
   const [permissions, setPermissions] = useState<string[]>([])
   const [role, setRole] = useState("")
 
@@ -38,10 +38,10 @@ export default function Admin(
     //     setIsAuthenticated(true)
     //   }
     // })();
-    setUsername("uptimumpride");
+
     (async () => {
       const data = await get("users/roles", {
-        id: "admin123"
+        roleId: "admin123"
       }) as rolesProperties
       setPermissions(data.permissions)
       setRole(data.role)
@@ -82,13 +82,13 @@ export default function Admin(
 
         {/* Navigation */}
         <div
-          className="flex flex-col justify-between h-[calc(70%-1rem)] w-full select-none">
+          className="flex flex-col justify-between h-[calc(70%-1rem)] w-full select-none overflow-y-auto">
           <div
             className="flex flex-col overflow-hidden overflow-y-auto scrollbar-thin w-full scrollbar-track-transparent scrollbar-thumb-brand outline-none">
             {
               AdminSidebar.map((component) => {
                 return (
-                  permissions.includes(component.href.toLowerCase()) || role.toLowerCase().startsWith("admin") || permissions.includes("all") || component.all ?
+                  permissions.includes(component.href.toLowerCase()) || permissions.includes("all") || component.all ?
                     <Link onClick={() => { setToggleMenu(false) }} className="flex items-center px-2 py gap-2 outline-none hover:bg-[#0a0a0a] transition-all ease-in-out" href={`/admin/${component.href}`} key={component.href}>
                       <span className={`relative text-brand ${path === `/admin${component.href ? "/" : ""}${component.href}` ? "left-0 animate-pulse" : "-left-100"} transition-all ease-out delay-150`}>
                         &gt;_

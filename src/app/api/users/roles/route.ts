@@ -81,7 +81,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const query = Object.fromEntries(searchParams.entries())
 
-  const role = query.id
+  const role = query.roleId
 
   if (role) {
     return Response.json(roles.find(item => item.id === role))
