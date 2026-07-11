@@ -41,9 +41,9 @@ export default function Admin(
 
     (async () => {
       const data = await get("users/roles", {
-        roleId: "admin123"
+        roleId: "570aae42-a62e-4289-9c0a-f4cfac83367e"
       }) as rolesProperties
-      setPermissions(data.permissions)
+      setPermissions(data.permissions ?? [])
       setRole(data.role)
     })()
   }, [])
@@ -76,7 +76,7 @@ export default function Admin(
           <SidebarHeader />
           <div className={`flex flex-col absolute w-full h-full ${username.length <= 30 ? "px-5 py-4" : "px-3 py-2"} wrap-anywhere`}>
             <span className={`text-lg`}><span className="text-branch text-[0.85rem]">@</span>{username.substring(0, 20)} {username.length > 20 ? "..." : ""}</span>
-            <span className={`pl-5 ${role.length <= 10 ? "text-sm" : "text-xs"}`}>{role}</span>
+            <span className={`pl-5 ${role?.length <= 10 ? "text-sm" : "text-xs"}`}>{role}</span>
           </div>
         </div >
 

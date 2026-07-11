@@ -58,7 +58,7 @@ export interface usersProperties extends defaultParams {
   last_name: string
   bio: string
   created_at: string
-  role: rolesProperties
+  roles: rolesProperties
 }
 
 export interface testimonialsProperties extends defaultParams {
