@@ -90,7 +90,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const query = Object.fromEntries(searchParams.entries())
 
-  return Response.json(users)
+  // return Response.json(users)
 
   const { data, error } = await supabaseConfig
     .from("users").select("username, first_name, last_name, created_at, roles(role)")
