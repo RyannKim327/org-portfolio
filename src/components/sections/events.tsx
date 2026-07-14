@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { get } from "@/lib/api";
+import { eventsProperties } from "@/interfaces";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,6 +36,19 @@ export function Events() {
       setEvents(data)
     })()
   }, [])
+
+  const status = (start: string | Date, end: string | Date) => {
+    const today = Date.now()
+    start = new Date(start)
+    end = new Date(end)
+    if (today < start.getDate()) {
+      return "Upcomming"
+    }
+    if (today < end.getDate()) {
+      return "Ongoing"
+    }
+    return "Ended"
+  }
 
   return (
     <section id="events" className="relative py-20 sm:py-24 border-t border-white/[0.04]">
@@ -66,7 +80,7 @@ export function Events() {
           viewport={{ once: true, margin: "-50px" }}
           className="space-y-4"
         >
-          {events.map((event) => (
+          {events.map((event: eventsProperties) => (
             <motion.div key={event.title} variants={itemVariants}>
               <Card className="p-4 sm:p-5 hover:border-brand/35 transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -78,7 +92,7 @@ export function Events() {
                       </Badge>
                       <span className="text-[10px] text-foreground-muted uppercase tracking-wider flex items-center gap-1">
                         <Calendar size={10} className="text-brand" />
-                        {event.date}
+                        {event.started} - {event.end}
                       </span>
                       {/* <span className="text-[10px] text-foreground-muted uppercase tracking-wider flex items-center gap-1"> */}
                       {/*   <Clock size={10} className="text-brand" /> */}
@@ -104,11 +118,11 @@ export function Events() {
                     <div className="flex items-center gap-1.5">
                       <span className={`w-1.5 h-1.5 rounded-full ${event.status === "registration open" ? "bg-brand animate-pulse" : "bg-neutral-500"}`} />
                       <span className="text-[10px] text-foreground-muted uppercase tracking-widest">
-                        {event.status}
+                        {status(event.started, event.end)}
                       </span>
                     </div>
                     <Button variant="outline" size="sm" href={event.href} className="text-xs py-1.5 px-4">
-                      {event.actionText}
+                      {event.action}
                       <ArrowRight size={12} />
                     </Button>
                   </div>

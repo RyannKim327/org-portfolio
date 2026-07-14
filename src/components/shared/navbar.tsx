@@ -27,8 +27,7 @@ const navLinks: { [key: string]: navigation[] } = {
     { label: "Events", href: "/#events" },
     { label: "FAQ", href: "/#faq" },
     { label: "Connect", href: "/#connect" },
-  ],
-  "admin": []
+  ]
 };
 
 export function Navbar() {
@@ -36,6 +35,8 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname()
   const path = pathname ? pathname.substring(1).toLowerCase() : ""
+
+  const navLink = navLinks[path.split("/")[0]] ?? []
 
   const [isAdmin, _] = useState(path !== "admin")
 
@@ -82,7 +83,7 @@ export function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
-            {isAdmin && navLinks[path.split("/")[0]] ? navLinks[path.split("/")[0]].map((link: navigation) => (
+            {isAdmin && navLink.map((link: navigation) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -91,7 +92,7 @@ export function Navbar() {
                 {link.label}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 bg-brand transition-all duration-300 group-hover:w-3/4" />
               </Link>
-            )) : null}
+            ))}
           </div>
 
           {/* Desktop CTA */}
@@ -111,14 +112,14 @@ export function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {navLinks[path.split("/")[0]].length > 0 ? mobileOpen ? <X size={22} /> : <Menu size={22} /> : null}
+            {navLink.length > 0 ? mobileOpen ? <X size={22} /> : <Menu size={22} /> : null}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {(mobileOpen && navLinks[path.split("/")[0]].length > 0) && (
+        {(mobileOpen && navLink.length > 0) && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
@@ -127,8 +128,8 @@ export function Navbar() {
             className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl border-b border-white/[0.06]"
           >
             <div className="px-6 py-4 space-y-1">
-              {isAdmin && navLinks[path.split("/")[0]] ?
-                navLinks[path.split("/")[0]].map((link: navigation) => (
+              {isAdmin && navLink ?
+                navLink.map((link: navigation) => (
                   <Link
                     key={link.label}
                     href={link.href}

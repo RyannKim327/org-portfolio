@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   // Automatically handles basePath if deployed under a subdirectory repository
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+  allowedDevOrigins: ['192.168.189.89'],
 };
 
 export default nextConfig;

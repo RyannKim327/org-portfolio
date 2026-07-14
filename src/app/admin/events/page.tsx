@@ -4,20 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { defaultParams } from "@/interfaces";
+import { eventsProperties } from "@/interfaces";
 import { get } from "@/lib/api";
-import { useEffect, useState } from "react";
+import { use } from "react";
 
+const eventApi = get("events")
 
 export default function Events() {
-  const [events, setEvents] = useState<defaultParams[]>([])
-
-  useEffect(() => {
-    (async () => {
-      const data = await get("events")
-      setEvents(data as defaultParams[])
-    })()
-  }, [])
+  const events = use(eventApi) as eventsProperties[]
 
   return (
     <div className="flex flex-row h-full w-full gap-2">
@@ -45,14 +39,14 @@ export default function Events() {
       </form>
       <div className="flex flex-col h-full w-[calc(30%-0.5rem)] gap-2 overflow-hidden overflow-y-auto scrollbar-track-transparent scrollbar-thumb-brand">
         {events.length > 0 ?
-          events.map((event, i) => {
+          events.map((event: eventsProperties, i: number) => {
             return (
               <Card
                 className="flex flex-col gap-2 cursor-pointer"
                 key={i}>
                 <div className="flex flex-col">
                   <span>{event.title}</span>
-                  <span className="text-xs">{event.date} - {event.location}</span>
+                  <span className="text-xs">{event.started} - {event.end} - [{event.location}]</span>
                 </div>
                 <blockquote className="text-sm border-l-3 pl-2 border-l-brand border-l-solid">&emsp;{event.description}</blockquote>
               </Card>

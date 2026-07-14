@@ -3,17 +3,13 @@
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { get } from "@/lib/api"
-import { useEffect, useState } from "react"
+import { use } from "react"
+import { projectsProperties } from "@/interfaces"
+
+const projectApi = get("projects")
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState([])
-
-  useEffect(() => {
-    (async () => {
-      const data = await get("projects")
-      setProjects(data)
-    })()
-  }, [])
+  const projects = use(projectApi) as projectsProperties[]
 
   return (
     <div className="flex flex-col h-full w-full gap-4 overflow-hidden">
